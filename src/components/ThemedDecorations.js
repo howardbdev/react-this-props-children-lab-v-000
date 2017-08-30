@@ -5,10 +5,10 @@ export default class ThemedDecorations extends React.Component {
   render() {
 
     const children = React.Children.map(this.props.children, child => {
-      return (
-        <h2 className={this.props.theme}>{child}</h2>
-      );
-    })
+      return React.cloneElement(child, {
+          className: this.props.theme,
+        });
+      });
 
     return(
       <div className="themed-decorations">
